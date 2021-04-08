@@ -1,21 +1,13 @@
-/**
- * Given matrix, a rectangular matrix of integers,
- * just add up all the values that don't appear below a "0".
- *
- * @param {Array<Array>} matrix
- * @return {Number}
- *
- * @example
- * matrix = [
- *  [0, 1, 1, 2],
- *  [0, 5, 0, 0],
- *  [2, 0, 3, 3]
- * ]
- *
- * The result should be 9
- */
-function getMatrixElementsSum(/* matrix */) {
-  throw new Error('Not implemented');
+function getMatrixElementsSum(matrix) {
+  let sum = 0;
+  const matrix1 = JSON.parse(JSON.stringify(matrix));
+  for (let row = 0; row < matrix1.length; row++) {
+    for (let col = 0; col < matrix1[row].length; col++) {
+      if (matrix1[row - 1] && matrix1[row - 1][col] === 0) matrix1[row][col] = 0;
+      sum += matrix1[row][col];
+    }
+  }
+  return sum;
 }
 
 module.exports = getMatrixElementsSum;
